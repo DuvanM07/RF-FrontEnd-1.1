@@ -11,18 +11,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
+}
 
-    .field {
-        display: flex;
-        flex-direction: column;
-        margin: .5rem 0;
-        width: 100%;
-    }
+.form-errors {
+    border: 1px dotted;
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 
-    .error {
-        font-size: .75rem;
-        height: 1rem;
-        color: red;
-        font-style: italic;
+    .title {
+        font-size: 1.2rem;
     }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem 0;
+    width: 100%;
+}
+
+.error {
+    font-size: .75rem;
+    height: 1rem;
+    color: red;
+    font-style: italic;
 }

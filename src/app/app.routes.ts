@@ -6,6 +6,7 @@ import { CreditsComponent } from './pages/public/credits/credits.component';
 import { DashboardComponent } from './pages/private/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/public/page-not-found/page-not-found.component';
 import { UsersComponent } from './pages/private/users/users.component';
+import { UserRegisterComponent } from './pages/private/users/user-register/user-register.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: '404', component: PageNotFoundComponent },
     { path: 'dashboard/users', component: UsersComponent },
+    { path: 'dashboard/users/new', component: UserRegisterComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];

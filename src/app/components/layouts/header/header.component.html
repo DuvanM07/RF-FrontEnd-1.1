@@ -5,7 +5,18 @@
     <ul class="main-menu">
         <li><a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
         <!-- <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li> -->
-         <li><a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>
+        <li>
+            <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
+            <ul class="sub-menu users-menu">
+                <li><a [routerLink]="[ 'dashboard', 'user', 'new' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New User</a></li>    
+            </ul>
+        </li>
+        <li>
+            <a [routerLink]="[ 'dashboard', 'categories' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+            <ul class="sub-menu categories-menu">
+                <li><a [routerLink]="[ 'dashboard', 'category', 'new' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New Category</a></li>    
+            </ul>
+        </li>
         <li><a routerLink="credits" routerLinkActive="active">Credits</a></li>
         <li><a routerLink="login" routerLinkActive="active">Login</a></li>
         <li><a routerLink="register" routerLinkActive="active">Register</a></li>

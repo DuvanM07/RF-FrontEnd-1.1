@@ -1,7 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsersService } from '../../private/users/users.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent {
   /** Atributos */
   formData!: FormGroup;
 
-  constructor( private usersService: UsersService ) {
+  constructor( private authService: AuthService ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -29,12 +29,32 @@ export class RegisterComponent {
     // Verifica el estado de validacion del formulario
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
-      // Invoque al servicio de usuario
-      this.usersService.registerUser( inputData ).subscribe( function( data ) {
-        console.log( data );
-      } );
+      
+      // Invoque al servicio de usuario: Sintaxis con funciones callback (Obsoleta - Legacy)
+      // this.authService.registerUser( inputData ).subscribe( 
+      //   ( data ) => {
+      //     console.log( data );
+      //   }, 
+      //   ( error ) => {
+      //     console.error( error );
+      //   }
+      // );
+
+      // Invoque al servicio de usuario: Sintaxis con objeto observador (Moderna - Angular 19)
+      this.authService.registerUser( inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+        },
+        error: ( err ) => {
+          console.error( err );
+        },
+        complete: () => {
+          console.log( 'Registro exitoso' );
+          this.formData.reset();    // Limpia los campos del formulario
+        } 
+      });
+
     }
 
-    this.formData.reset();    // Limpia los campos del formulario
   }
 }

@@ -12,6 +12,7 @@ import { CategoryRegisterComponent } from './pages/private/categories/category-r
 import { ProductsComponent } from './pages/private/products/products.component';
 import { ProductRegisterComponent } from './pages/private/products/product-register/product-register.component';
 import { CategoryEditComponent } from './pages/private/categories/category-edit/category-edit.component';
+import { ProductEditComponent } from './pages/private/products/product-edit/product-edit.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'dashboard/categories', component: CategoriesComponent },
     { path: 'dashboard/user/new', component: UserRegisterComponent },
     { path: 'dashboard/product/new', component: ProductRegisterComponent },
+    { path: 'dashboard/product/edit', component: ProductEditComponent },
     { path: 'dashboard/category/new', component: CategoryRegisterComponent },
     { path: 'dashboard/category/edit', component: CategoryEditComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },

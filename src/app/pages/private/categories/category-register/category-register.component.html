@@ -1,4 +1,4 @@
-<form 
+<form
     class="form form-category"
     [formGroup]="formData"
     (ngSubmit)="onSubmit()"
@@ -10,7 +10,7 @@
         <div class="form-content">
             <div class="field">
                 <label for="name">Name Category *</label>
-                <input type="text" formControlName="name" id="name"  placeholder="Ej: manuela@correo.co" />
+                <input type="text" formControlName="name" id="name"  placeholder="Ex: Drinks" />
                 <div class="error">
                     @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
                         @if( this.formData.get( 'name' )?.errors?.['required'] ) {
@@ -21,7 +21,7 @@
             </div>
             <div class="field">
                 <label for="description">Description</label>
-                <textarea formControlName="description" id="description" placeholder="Ej: Describa detalle de categoria"></textarea>
+                <textarea formControlName="description" id="description" placeholder="Ex: Describa detalle de categoria"></textarea>
                 <div class="error"></div>
             </div>
             <div class="field">

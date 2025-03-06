@@ -53,12 +53,12 @@
             <div class="field">
                 <label for="role">Role *</label>
                 <!-- <input type="password" formControlName="role" id="role" placeholder="Ej: 123456789" /> -->
-                 <select formControlName="role" id="role">
+                <select formControlName="role" id="role">
                     <option value="">Selected...</option>
                     @for ( role of roles; track $index ) {
                         <option [value]="role">{{ role }}</option>
                     }
-                 </select>
+                </select>
                 <div class="error">
                     @if( this.formData.get( 'role' )?.invalid && ( this.formData.get( 'role' )?.dirty || this.formData.get( 'role' )?.touched ) ) {
                         @if( this.formData.get( 'role' )?.errors?.[ 'required' ] ) {
@@ -66,6 +66,22 @@
                         }
                     }
                 </div>
+            </div>
+            <div class="field">
+              <label>State *</label>
+              <div class="state">
+                <input type="radio" formControlName="state" id="stateEnabled" [value]="true" />
+                <label for="stateEnabled">Enabled</label>
+                <input type="radio" formControlName="state" id="stateDisabled" [value]="false" />
+                <label for="stateDisabled">Disabled</label>
+              </div>
+              <div class="error">
+                @if( this.formData.get( 'state' )?.invalid && ( this.formData.get( 'state' )?.dirty || this.formData.get( 'state' )?.touched ) ) {
+                    @if( this.formData.get( 'state' )?.errors?.['required'] ) {
+                        <span>Selecting a state is required</span>
+                    }
+                }
+              </div>
             </div>
             <div class="field">
                 <button type="submit" [disabled]="this.formData.invalid">Register User</button>
@@ -90,6 +106,10 @@
             <div class="field">
                 <label for="role">Role</label>
                 <code class="error">{{ formData.get( 'role' )?.errors | json }}</code>
+            </div>
+            <div class="field">
+              <label for="state">State *</label>
+              <code class="error">{{ formData.value.state }}</code>
             </div>
             <div class="field">
                 <label for="username">Valid form</label>

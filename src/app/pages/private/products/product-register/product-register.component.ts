@@ -25,7 +25,8 @@ export class ProductRegisterComponent {
       description: new FormControl( '' ),
       price: new FormControl( 0 , [ Validators.required, Validators.min( 0 ) ] ),
       urlImage: new FormControl( '' ),
-      category: new FormControl( '', [ Validators.required ] )
+      category: new FormControl( '', [ Validators.required ] ),
+      state: new FormControl( true, [ Validators.required ] )
     });
   }
 

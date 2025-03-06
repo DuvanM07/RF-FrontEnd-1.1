@@ -60,6 +60,22 @@
               </div>
             </div>
             <div class="field">
+              <label>State *</label>
+              <div class="state">
+                <input type="radio" formControlName="state" id="stateAvailable" [value]="true" />
+                <label for="stateAvailable">Available</label>
+                <input type="radio" formControlName="state" id="stateNotAvailable" [value]="false" />
+                <label for="stateNotAvailable">NotAvailable</label>
+              </div>
+              <div class="error">
+                @if( this.formData.get( 'state' )?.invalid && ( this.formData.get( 'state' )?.dirty || this.formData.get( 'state' )?.touched ) ) {
+                    @if( this.formData.get( 'state' )?.errors?.['required'] ) {
+                        <span>Selecting a state is required</span>
+                    }
+                }
+              </div>
+            </div>
+            <div class="field">
                 <button type="submit" [disabled]="this.formData.invalid">Edit Product</button>
             </div>
         </div>
@@ -86,6 +102,10 @@
             <div class="field">
               <label for="category">Category *</label>
               <code class="error">{{ formData.get( 'category' )?.errors | json }}</code>
+            </div>
+            <div class="field">
+              <label for="state">State *</label>
+              <code class="error">{{ formData.value.state }}</code>
             </div>
             <div class="field">
                 <label for="username">Valid form</label>

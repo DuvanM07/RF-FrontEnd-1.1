@@ -19,7 +19,8 @@ export class UserRegisterComponent {
       name: new FormControl( '' , [ Validators.required ] ),
       username: new FormControl( '', [ Validators.required, Validators.email ] ),
       password: new FormControl( '', [ Validators.required, Validators.minLength( 6 ), Validators.maxLength( 12 ) ] ),
-      role: new FormControl( '', [ Validators.required ] )
+      role: new FormControl( '', [ Validators.required ] ),
+      state: new FormControl( true, [ Validators.required ] )
     });
   }
 

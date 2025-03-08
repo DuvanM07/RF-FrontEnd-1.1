@@ -13,12 +13,7 @@ import { CategoryService } from '../../../../services/category.service';
 export class ProductRegisterComponent {
   /** Atributos */
   formData!: FormGroup;
-  categories: Array<{ _id: string; name: string; }> = [
-    { _id: '1', name: 'Drinks' },
-    { _id: '2', name: 'Soups' },
-    { _id: '3', name: 'Starters' },
-    { _id: '4', name: 'Cold dishes' }
-  ];
+  categories!: Array<{ _id: string; name: string; }>;
 
   constructor(
     private productService: ProductService,
@@ -37,15 +32,15 @@ export class ProductRegisterComponent {
 
   ngOnInit() {
     this.categoryService.getCategories().subscribe({
-      next: ( data ) => {
+      next: ( data: any ) => {
         console.log( data );
+        this.categories = data.data;
+        console.log( 'Categories successfully obtained' );
       },
       error: ( error ) => {
         console.error( error );
       },
-      complete: () => {
-        console.log( 'Categories successfully obtained' );
-      }
+      complete: () => {}
     });
   }
 
@@ -61,12 +56,12 @@ export class ProductRegisterComponent {
       this.productService.createProduct( inputData ).subscribe({
         next: ( data ) => {
           console.log( data );
+          console.log( 'Product registered successfully' );
         },
         error: ( error ) => {
           console.error( error );
         },
         complete: () => {
-          console.log( 'Product registered successfully' );
           this.formData.reset();            // Limpia los campos del formulario
         }
       });

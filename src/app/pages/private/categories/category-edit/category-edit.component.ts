@@ -2,6 +2,8 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from '../../../../services/category.service';
+import { Category } from '../../../../interfaces/category';
 
 @Component({
   selector: 'app-category-edit',
@@ -12,8 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryEditComponent {
   /** Atributos */
   formData!: FormGroup;
+  categoryId!: string;
 
-  constructor( private route: ActivatedRoute ) {
+  constructor(
+    private route: ActivatedRoute,
+    private categoryService: CategoryService
+  ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '', [ Validators.required ] ),
@@ -23,10 +29,26 @@ export class CategoryEditComponent {
 
   ngOnInit() {
     this.route.paramMap.subscribe( params => {
-      const categoryId = params.get( 'id' );
-      console.log('ID de la categoría:', categoryId);
+      this.categoryId = params.get( 'id' ) ?? '';
+      console.log('ID de la categoría:', this.categoryId );
 
+      this.loadFormData( this.categoryId );   //
     });
+  }
+
+  private loadFormData( categoryId: string ) {
+    if ( categoryId ) {
+
+      this.categoryService.getCategoryById( categoryId ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+        },
+        error: (error) => {
+          console.error( error );
+        }
+      });
+    }
+
   }
 
   onSubmit() {

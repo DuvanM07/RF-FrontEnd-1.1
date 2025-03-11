@@ -31,4 +31,25 @@ export class CategoriesComponent {
       }
     });
   }
+
+  onRemove( categoryId: string ) {
+
+    if( ! categoryId ) {
+      console.error( 'Invalid category ID' );
+      return;
+    }
+
+    this.categoryService.deleteCategoryById( categoryId ).subscribe({
+      next: ( data ) => {
+        console.log( data );
+        console.log( 'Delete category successfully' );
+
+        this.ngOnInit();    // Actualiza datos
+      },
+      error: ( error ) => {
+        console.error( error );
+      },
+      complete: () => {},
+    });
+  }
 }

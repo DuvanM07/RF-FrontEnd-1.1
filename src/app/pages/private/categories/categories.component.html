@@ -21,7 +21,7 @@
               <td>{{ category.description }}</td>
               <td>
                 <button>Editar</button>
-                <button>Eliminar</button>
+                <button (click)="onRemove( category._id ?? '' )">Eliminar</button>
               </td>
             </tr>
           }

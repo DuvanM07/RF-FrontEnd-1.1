@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../../../services/category.service';
+import { Response } from '../../../../interfaces/response';
 import { Category } from '../../../../interfaces/category';
 
 @Component({
@@ -40,8 +41,14 @@ export class CategoryEditComponent {
     if ( categoryId ) {
 
       this.categoryService.getCategoryById( categoryId ).subscribe({
-        next: ( data ) => {
+        next: ( data: Response<Category> ) => {
           console.log( data );
+
+          // Establece nuevos valores para el formulario
+          this.formData.patchValue({
+            name: data?.data?.name,
+            description: data?.data?.description
+          });
         },
         error: (error) => {
           console.error( error );

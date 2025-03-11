@@ -1,7 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../../services/category.service';
 import { Response } from '../../../../interfaces/response';
 import { Category } from '../../../../interfaces/category';
@@ -19,7 +19,8 @@ export class CategoryEditComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router
   ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
@@ -65,8 +66,23 @@ export class CategoryEditComponent {
     // Verifica el estado de validacion del formulario
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
-    }
 
-    this.formData.reset();    // Limpia los campos del formulario
+      // Vinculamos al Servicio que hace la peticion al BackEnd para actualizar la categoria
+      this.categoryService.updateCategoryById( this.categoryId, inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+          console.log( 'Register categories successfully ' );
+
+          this.router.navigateByUrl( 'dashboard/categories' );  // Redirecciona
+        },
+        error: ( error ) => {
+          console.error( error );
+        },
+        complete: () => {
+          this.formData.reset();    // Limpia los campos del formulario
+        },
+      });
+
+    }
   }
 }

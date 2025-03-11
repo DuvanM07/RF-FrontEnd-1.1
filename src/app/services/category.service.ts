@@ -11,4 +11,8 @@ export class CategoryService {
   getCategories() {
     return  this.http.get( 'http://localhost:3000/api/categories' );
   }
+
+  createCategory( newCategory: any ) {
+    return this.http.post( 'http://localhost:3000/api/categories', newCategory );
+  }
 }

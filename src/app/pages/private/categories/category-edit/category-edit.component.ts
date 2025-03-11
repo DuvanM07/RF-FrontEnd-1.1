@@ -1,6 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category-edit',
@@ -12,11 +13,19 @@ export class CategoryEditComponent {
   /** Atributos */
   formData!: FormGroup;
 
-  constructor() {
+  constructor( private route: ActivatedRoute ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '', [ Validators.required ] ),
       description: new FormControl( '' )
+    });
+  }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe( params => {
+      const categoryId = params.get( 'id' );
+      console.log('ID de la categoría:', categoryId);
+
     });
   }
 

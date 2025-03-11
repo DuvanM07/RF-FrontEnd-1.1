@@ -20,7 +20,7 @@
               <td>{{ category.name }}</td>
               <td>{{ category.description }}</td>
               <td>
-                <button>Editar</button>
+                <a [routerLink]="'/dashboard/category/edit/' + (category._id ?? '')">Editar</a>
                 <button (click)="onRemove( category._id ?? '' )">Eliminar</button>
               </td>
             </tr>

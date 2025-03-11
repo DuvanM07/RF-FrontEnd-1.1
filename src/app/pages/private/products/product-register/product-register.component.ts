@@ -1,6 +1,8 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProductService } from '../../../../services/product.service';
+import { CategoryService } from '../../../../services/category.service';
 
 @Component({
   selector: 'app-product-register',
@@ -9,16 +11,17 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './product-register.component.css'
 })
 export class ProductRegisterComponent {
+
   /** Atributos */
   formData!: FormGroup;
-  categories: Array<{ _id: string; name: string; }> = [
-    { _id: '1', name: 'Drinks' },
-    { _id: '2', name: 'Soups' },
-    { _id: '3', name: 'Starters' },
-    { _id: '4', name: 'Cold dishes' }
-  ];
+  categories: any;
 
-  constructor() {
+  constructor(
+    private productService: ProductService,
+    private categoryService: CategoryService
+  ) {
+    console.log('%c constructor: Se ejecuta cuando Angular instancia el componente.', 'color: blue');
+
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -30,6 +33,20 @@ export class ProductRegisterComponent {
     });
   }
 
+  ngOnInit() {
+    this.categoryService.getCategories().subscribe({
+      next: ( data: any ) => {
+        console.log( data.data );    // { ok: true, data: [{...},{...},{...},{...}] }
+        this.categories = data.data;
+
+        console.log( 'Categories obtained successfuly' );
+      },
+      error: ( error ) => {
+        console.error( error );
+      }
+    });
+  }
+
   onSubmit() {
     // Obtiene los valores de los campos campos del formulario
     const inputData = this.formData.value;
@@ -37,7 +54,22 @@ export class ProductRegisterComponent {
     // Verifica el estado de validacion del formulario
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
+
+      // Usar el servicio para conectar con el backend y enviar los valores capturados por el formulario
+      this.productService.createProduct( inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+          console.log( 'Product registered successfuly' );
+        },
+        error: ( errors ) => {
+          console.log( errors );
+        },
+        complete: () => {
+          this.formData.reset();
+        }
+      });
     }
 
   }
+
 }

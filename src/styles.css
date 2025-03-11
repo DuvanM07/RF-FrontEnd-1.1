@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/** CSS: Forms */
 .form h1 {
     text-align: center;
 }
@@ -39,4 +39,34 @@
     height: 1rem;
     color: red;
     font-style: italic;
+}
+
+/** CSS: Table */
+.categories-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.categories-table th, .categories-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.categories-table th {
+  background-color: #f4f4f4;
+}
+
+.categories-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
 }

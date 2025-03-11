@@ -1,1 +1,31 @@
-<p>categories works!</p>
+<h1>Listado de categorias</h1>
+
+@if ( isLoading ) {
+  <div>Cargando categorías...</div>
+} @else {
+    @if (categories.length === 0) {
+      <div class="no-categories">No hay categorías registradas.</div>
+    } @else {
+      <table class="categories-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (category of categories; track category._id) {
+            <tr>
+              <td>{{ category.name }}</td>
+              <td>{{ category.description }}</td>
+              <td>
+                <a [routerLink]="'/dashboard/category/edit/' + (category._id ?? '')">Editar</a>
+                <button (click)="onRemove( category._id ?? '' )">Eliminar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+}

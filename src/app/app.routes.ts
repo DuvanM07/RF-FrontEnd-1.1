@@ -30,7 +30,7 @@ export const routes: Routes = [
     { path: 'dashboard/product/new', component: ProductRegisterComponent },
     { path: 'dashboard/product/edit', component: ProductEditComponent },
     { path: 'dashboard/category/new', component: CategoryRegisterComponent },
-    { path: 'dashboard/category/edit', component: CategoryEditComponent },
+    { path: 'dashboard/category/edit/:id', component: CategoryEditComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];

@@ -1,8 +1,9 @@
 import { JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
 import { CategoryService } from '../../../../services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-register',
@@ -11,14 +12,18 @@ import { CategoryService } from '../../../../services/category.service';
   styleUrl: './product-register.component.css'
 })
 export class ProductRegisterComponent {
+
   /** Atributos */
   formData!: FormGroup;
-  categories!: Array<{ _id: string; name: string; }>;
+  categories: any;
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router: Router
   ) {
+    console.log('%c constructor: Se ejecuta cuando Angular instancia el componente.', 'color: blue');
+
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -33,14 +38,14 @@ export class ProductRegisterComponent {
   ngOnInit() {
     this.categoryService.getCategories().subscribe({
       next: ( data: any ) => {
-        console.log( data );
+        console.log( data.data );    // { ok: true, data: [{...},{...},{...},{...}] }
         this.categories = data.data;
-        console.log( 'Categories successfully obtained' );
+
+        console.log( 'Categories obtained successfuly' );
       },
       error: ( error ) => {
         console.error( error );
-      },
-      complete: () => {}
+      }
     });
   }
 
@@ -52,20 +57,23 @@ export class ProductRegisterComponent {
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
 
-      // Conectamos con el servicio para poder enviar los datos del producto para crearlo
+      // Usar el servicio para conectar con el backend y enviar los valores capturados por el formulario
       this.productService.createProduct( inputData ).subscribe({
         next: ( data ) => {
           console.log( data );
-          console.log( 'Product registered successfully' );
+          console.log( 'Product registered successfuly' );
+          // this.router.navigateByUrl( 'dashboard/products' );
+          this.router.navigate([ 'dashboard','products' ]);
         },
-        error: ( error ) => {
-          console.error( error );
+        error: ( errors ) => {
+          console.log( errors );
         },
         complete: () => {
-          this.formData.reset();            // Limpia los campos del formulario
+          this.formData.reset();
         }
       });
     }
 
   }
+
 }

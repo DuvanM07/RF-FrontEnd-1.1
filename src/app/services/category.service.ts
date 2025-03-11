@@ -23,7 +23,7 @@ export class CategoryService {
     return this.http.delete<Response<Category>>( `http://localhost:3000/api/categories/${ id }` );
   }
 
-  getCategoryById( id: string ) {
-    return this.http.get( `http://localhost:3000/api/categories/${ id }` );
+  getCategoryById( id: string ) : Observable<Response<Category>> {
+    return this.http.get<Response<Category>>( `http://localhost:3000/api/categories/${ id }` );
   }
 }

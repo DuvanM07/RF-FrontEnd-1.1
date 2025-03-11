@@ -32,7 +32,7 @@ export class CategoryEditComponent {
       this.categoryId = params.get( 'id' ) ?? '';
       console.log('ID de la categoría:', this.categoryId );
 
-      this.loadFormData( this.categoryId );   //
+      this.loadFormData( this.categoryId );   // Obtener los datos de la categoria por ID y cargarlo en el formulario
     });
   }
 

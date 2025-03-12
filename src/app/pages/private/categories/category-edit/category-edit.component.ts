@@ -71,7 +71,7 @@ export class CategoryEditComponent {
       this.categoryService.updateCategoryById( this.categoryId, inputData ).subscribe({
         next: ( data ) => {
           console.log( data );
-          console.log( 'Register categories successfully ' );
+          console.log( 'Update categories successfully' );
 
           this.router.navigateByUrl( 'dashboard/categories' );  // Redirecciona
         },

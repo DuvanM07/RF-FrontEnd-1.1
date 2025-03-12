@@ -97,6 +97,22 @@ export class ProductEditComponent {
     // Verifica el estado de validacion del formulario
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
+
+      // Usar el servicio para conectar con el backend y enviar los valores capturados por el formulario
+      this.productService.updateProductById( this.productId, inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+          console.log( 'Update categories successfully' );
+          // this.router.navigateByUrl( 'dashboard/products' );
+          this.router.navigate([ 'dashboard','products' ]);
+        },
+        error: ( errors ) => {
+          console.log( errors );
+        },
+        complete: () => {
+          this.formData.reset();
+        }
+      });
     }
 
   }

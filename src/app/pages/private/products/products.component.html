@@ -38,7 +38,7 @@
                 <div class="price">{{ product.price }}</div>
               </td>
               <td>
-                <button>Editar</button>
+                <a [routerLink]="'/dashboard/product/edit/' + (product._id ?? '')">Editar</a>
                 <button (click)="onRemove( product._id ?? '' )">Eliminar</button>
               </td>
             </tr>

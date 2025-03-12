@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'dashboard/user/new', component: UserRegisterComponent },
     { path: 'dashboard/user/edit', component: UserEditComponent },
     { path: 'dashboard/product/new', component: ProductRegisterComponent },
-    { path: 'dashboard/product/edit', component: ProductEditComponent },
+    { path: 'dashboard/product/edit/:id', component: ProductEditComponent },
     { path: 'dashboard/category/new', component: CategoryRegisterComponent },
     { path: 'dashboard/category/edit/:id', component: CategoryEditComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },

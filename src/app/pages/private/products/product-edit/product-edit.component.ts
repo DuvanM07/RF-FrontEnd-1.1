@@ -1,6 +1,10 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ProductService } from '../../../../services/product.service';
+import { CategoryService } from '../../../../services/category.service';
+import { Router } from '@angular/router';
+import { Category } from '../../../../interfaces/category';
 
 @Component({
   selector: 'app-product-edit',
@@ -11,14 +15,13 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class ProductEditComponent {
   /** Atributos */
   formData!: FormGroup;
-  categories: Array<{ _id: string; name: string; }> = [
-    { _id: '1', name: 'Drinks' },
-    { _id: '2', name: 'Soups' },
-    { _id: '3', name: 'Starters' },
-    { _id: '4', name: 'Cold dishes' }
-  ];
+  categories!: Array<Category>;
 
-  constructor() {
+  constructor(
+      private productService: ProductService,
+      private categoryService: CategoryService,
+      private router: Router
+  ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -27,6 +30,24 @@ export class ProductEditComponent {
       urlImage: new FormControl( '' ),
       category: new FormControl( '', [ Validators.required ] ),
       state: new FormControl( true, [ Validators.required ] )
+    });
+  }
+
+  ngOnInit() {
+    this.loadCategories();
+  }
+
+  private loadCategories() {
+    this.categoryService.getCategories().subscribe({
+      next: ( data ) => {
+        console.log( data.data );    // { ok: true, data: [{...},{...},{...},{...}] }
+        this.categories = data.data ?? [];
+
+        console.log( 'Categories obtained successfuly' );
+      },
+      error: ( error ) => {
+        console.error( error );
+      }
     });
   }
 

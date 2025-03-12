@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
 import { CategoryService } from '../../../../services/category.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../../../../interfaces/category';
 
 @Component({
@@ -16,11 +16,13 @@ export class ProductEditComponent {
   /** Atributos */
   formData!: FormGroup;
   categories!: Array<Category>;
+  productId!: string;
 
   constructor(
       private productService: ProductService,
       private categoryService: CategoryService,
-      private router: Router
+      private router: Router,
+      private route: ActivatedRoute
   ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
@@ -35,6 +37,7 @@ export class ProductEditComponent {
 
   ngOnInit() {
     this.loadCategories();
+    this.getRouteId();
   }
 
   private loadCategories() {
@@ -48,6 +51,13 @@ export class ProductEditComponent {
       error: ( error ) => {
         console.error( error );
       }
+    });
+  }
+
+  private getRouteId () {
+    this.route.paramMap.subscribe( params => {
+      this.productId = params.get( 'id' ) ?? '';
+      console.log('ID de la categoría:', this.productId );
     });
   }
 

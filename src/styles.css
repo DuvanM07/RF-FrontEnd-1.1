@@ -42,24 +42,35 @@
 }
 
 /** CSS: Table */
-.categories-table {
+.data-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.categories-table th, .categories-table td {
+.data-table th, .data-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.categories-table th {
+.data-table th {
   background-color: #f4f4f4;
 }
 
-.categories-table tr:hover {
+.data-table tr:hover {
   background-color: #f9f9f9;
 }
+
+.image-avatar {
+  max-width: 6rem;
+  max-height: 6rem;
+  width: 100%;
+  height: 6rem;
+  border-radius: 6rem;
+}
+
+user agent stylesheet
+img
 
 button {
   margin-right: 5px;

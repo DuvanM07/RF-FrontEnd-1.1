@@ -1,17 +1,17 @@
-<h1>Listado de categorias</h1>
+<h1>Category list</h1>
 
 @if ( isLoading ) {
-  <div>Cargando categorías...</div>
+  <div>Loading products...</div>
 } @else {
     @if (categories.length === 0) {
-      <div class="no-categories">No hay categorías registradas.</div>
+      <div class="no-data">There are no registered categories.</div>
     } @else {
-      <table class="categories-table">
+      <table class="data-table">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+            <th>Category name</th>
+            <th>Description</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>

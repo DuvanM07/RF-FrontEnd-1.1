@@ -20,7 +20,13 @@
           @for ( product of products; track product._id ) {
             <tr>
               <td>
-                <img [src]="product.urlImage" class="image-avatar" [alt]="product.name" />
+                @if ( ! product?.urlImage ) {
+                  <img src="assets/images/no-image-available.jpg" class="image-avatar" alt="No image available" />
+                }
+                @else {
+                  <img [src]="product.urlImage" class="image-avatar" [alt]="product.name" />
+                }
+
               </td>
               <td>
                 <div class="name">{{ product.name }}</div>

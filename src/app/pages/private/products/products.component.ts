@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../interfaces/product';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-products',
-  imports: [ JsonPipe],
+  imports: [],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })

@@ -4,7 +4,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ProductService } from '../../../../services/product.service';
 import { CategoryService } from '../../../../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Response } from '../../../../interfaces/response';
 import { Category } from '../../../../interfaces/category';
+import { Product } from '../../../../interfaces/product';
 
 @Component({
   selector: 'app-product-edit',
@@ -38,6 +41,7 @@ export class ProductEditComponent {
   ngOnInit() {
     this.loadCategories();
     this.getRouteId();
+    this.loadFormData( this.productId );
   }
 
   private loadCategories() {
@@ -59,6 +63,31 @@ export class ProductEditComponent {
       this.productId = params.get( 'id' ) ?? '';
       console.log('ID de la categoría:', this.productId );
     });
+  }
+
+  private loadFormData( categoryId: string ) {
+    if ( categoryId ) {
+
+      this.productService.getProductById( categoryId ).subscribe({
+        next: ( data: Response<Product> ) => {
+          console.log( data );
+
+          // Establece nuevos valores para el formulario
+          this.formData.patchValue({
+            name: data?.data?.name,
+            description: data?.data?.description,
+            price: data?.data?.price,
+            urlImage: data?.data?.urlImage,
+            category: data?.data?.category,
+            state: data?.data?.state,
+            // TODO: userId guarda el usuario que lo creó. Validar crear un atributo para saber el userId de quien lo modificó
+          });
+        },
+        error: (error) => {
+          console.error( error );
+        }
+      });
+    }
   }
 
   onSubmit() {

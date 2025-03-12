@@ -39,7 +39,7 @@
               </td>
               <td>
                 <button>Editar</button>
-                <button>Eliminar</button>
+                <button (click)="onRemove( product._id ?? '' )">Eliminar</button>
               </td>
             </tr>
           }

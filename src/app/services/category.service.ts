@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  /** Atributos */
   private token: string;
   private headers: HttpHeaders;
 

@@ -15,6 +15,17 @@ export class ProductRegisterComponent {
 
   /** Atributos */
   formData!: FormGroup;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  categories!: Array<{ _id: string; name: string; }>;
+
+  constructor(
+    private productService: ProductService,
+    private categoryService: CategoryService
+  ) {
+=======
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
   categories: any;
 
   constructor(
@@ -24,6 +35,10 @@ export class ProductRegisterComponent {
   ) {
     console.log('%c constructor: Se ejecuta cuando Angular instancia el componente.', 'color: blue');
 
+<<<<<<< HEAD
+=======
+>>>>>>> temp-branch
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -38,6 +53,19 @@ export class ProductRegisterComponent {
   ngOnInit() {
     this.categoryService.getCategories().subscribe({
       next: ( data: any ) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        console.log( data );
+        this.categories = data.data;
+        console.log( 'Categories successfully obtained' );
+      },
+      error: ( error ) => {
+        console.error( error );
+      },
+      complete: () => {}
+=======
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
         console.log( data.data );    // { ok: true, data: [{...},{...},{...},{...}] }
         this.categories = data.data;
 
@@ -46,6 +74,10 @@ export class ProductRegisterComponent {
       error: ( error ) => {
         console.error( error );
       }
+<<<<<<< HEAD
+=======
+>>>>>>> temp-branch
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
     });
   }
 
@@ -57,6 +89,22 @@ export class ProductRegisterComponent {
     if( this.formData.valid ) {
       console.log( inputData );   // Enviar los datos al BackEnd
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      // Conectamos con el servicio para poder enviar los datos del producto para crearlo
+      this.productService.createProduct( inputData ).subscribe({
+        next: ( data ) => {
+          console.log( data );
+          console.log( 'Product registered successfully' );
+        },
+        error: ( error ) => {
+          console.error( error );
+        },
+        complete: () => {
+          this.formData.reset();            // Limpia los campos del formulario
+=======
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
       // Usar el servicio para conectar con el backend y enviar los valores capturados por el formulario
       this.productService.createProduct( inputData ).subscribe({
         next: ( data ) => {
@@ -70,6 +118,10 @@ export class ProductRegisterComponent {
         },
         complete: () => {
           this.formData.reset();
+<<<<<<< HEAD
+=======
+>>>>>>> temp-branch
+>>>>>>> 893d778f5ec77ca57c7ac86e620bd2868586c918
         }
       });
     }

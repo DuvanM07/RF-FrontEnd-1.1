@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,18 @@ export class LoginComponent {
   /** Atributos */
   formData!: FormGroup;
 
-  constructor( private authService: AuthService ) {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
-      username: new FormControl( 
-        '', 
+      username: new FormControl(
+        '',
         [ Validators.required, Validators.email ]
       ),
-      password: new FormControl( 
-        '', 
+      password: new FormControl(
+        '',
         [ Validators.required, Validators.minLength( 6 ), Validators.maxLength( 12 ) ]
        )
     });
@@ -38,9 +42,14 @@ export class LoginComponent {
       this.authService.loginUser( inputData ).subscribe({
         next: ( data ) => {
           console.log( data );
+
+          /** Guarda token y datos del usuario en el localStorage */
           localStorage.setItem('token', data.token! );
           delete data.data?.password;
           localStorage.setItem('authUser', JSON.stringify( data.data ) );
+
+          /** Redirecciona al Dashboard */
+          this.router.navigateByUrl( 'dashboard' );
         },
         error: ( err ) => {
           console.error( err );

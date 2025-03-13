@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Product } from '../../../interfaces/product';
 import { ProductService } from '../../../services/product.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ CurrencyPipe ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

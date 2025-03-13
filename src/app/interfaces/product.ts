@@ -4,10 +4,10 @@ export interface Product {
   _id?: string;
   name: string;
   description?: string
-  price: number;
+  price?: number;
   urlImage?: string;
   category: Category;
-  state: boolean;
+  state?: boolean;
   userId?: string;
   createdAt?: string;
   updatedAt?: string;

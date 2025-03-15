@@ -29,6 +29,7 @@
         <li><a routerLink="credits" routerLinkActive="active">Credits</a></li>
         <li><a routerLink="login" routerLinkActive="active">Login</a></li>
         <li><a routerLink="register" routerLinkActive="active">Register</a></li>
+        <li><a (click)="logout()">Logout</a></li>
     </ul>
 
     @if( user ) {

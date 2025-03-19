@@ -1,38 +1,60 @@
+<header class="header">
+    <div class="container">
+        <nav class="nav-header">
+            <a href="#carta" class="nav-link">Menu</a>
+            <a href="" class="nav-link">Contacto</a>
+            <a href="" class="nav-link">Ubicacion</a>
+        </nav>
+        <div class="logo">
+            <h1 class="name-empresa">Halcon Dorado</h1>
+        </div>
+        <nav class="nav-header">
+            <ul class="main-menu">
+                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Credits</a></li>
+                <li ><a class="nav-user" routerLink="login" routerLinkActive="active">Login</a></li>
+                <li ><a class="nav-user" routerLink="register" routerLinkActive="active">Register</a></li>
+                <li ><a class="nav-user" (click)="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <nav>
-    <a href="#">
-        <img src="assets/images/site-logo.jpg" alt="Site Logp: Restaurant Finder" class="site-logo">
-    </a>
     <ul class="main-menu">
-        <li><a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+        <li><a routerLink="dashboard" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
         <!-- <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li> -->
         <li>
-            <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
+            <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Users</a>
             <ul class="sub-menu users-menu">
-                <li><a [routerLink]="[ 'dashboard', 'user', 'new' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New User</a></li>
-                <li><a [routerLink]="[ 'dashboard', 'user', 'edit' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Edit User</a></li>
+                <li><a [routerLink]="[ 'dashboard', 'user', 'new' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">New User</a></li>
+                <li><a [routerLink]="[ 'dashboard', 'user', 'edit' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Edit User</a></li>
             </ul>
         </li>
         <li>
-          <a [routerLink]="[ 'dashboard', 'products' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Products</a>
-          <ul class="sub-menu categories-menu">
-              <li><a [routerLink]="[ 'dashboard', 'product', 'new' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New Product</a></li>
-              <li><a [routerLink]="[ 'dashboard', 'product', 'edit' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Edit Product</a></li>
-          </ul>
-      </li>
-        <li>
-            <a [routerLink]="[ 'dashboard', 'categories' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+            <a [routerLink]="[ 'dashboard', 'products' ]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Products</a>
             <ul class="sub-menu categories-menu">
-                <li><a [routerLink]="[ 'dashboard', 'category', 'new' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New Category</a></li>
-                <li><a [routerLink]="[ 'dashboard', 'category', 'edit' ]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Edit Category</a></li>
+                <li><a [routerLink]="[ 'dashboard', 'product', 'new' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">New Product</a></li>
+                <li><a [routerLink]="[ 'dashboard', 'product', 'edit' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Edit Product</a></li>
             </ul>
         </li>
-        <li><a routerLink="credits" routerLinkActive="active">Credits</a></li>
-        <li><a routerLink="login" routerLinkActive="active">Login</a></li>
-        <li><a routerLink="register" routerLinkActive="active">Register</a></li>
-        <li><a (click)="logout()">Logout</a></li>
+        <li>
+            <a [routerLink]="[ 'dashboard', 'categories' ]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+            <ul class="sub-menu categories-menu">
+                <li><a [routerLink]="[ 'dashboard', 'category', 'new' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">New Category</a></li>
+                <li><a [routerLink]="[ 'dashboard', 'category', 'edit' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Edit Category</a></li>
+            </ul>
+        </li>
     </ul>
-
     @if( user ) {
-      <p>Hola, {{user.name}}</p>
+    <p>Holaa, {{user.name}}</p>
     }
 </nav>

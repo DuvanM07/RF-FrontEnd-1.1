@@ -14,13 +14,14 @@ import { ProductRegisterComponent } from './pages/private/products/product-regis
 import { CategoryEditComponent } from './pages/private/categories/category-edit/category-edit.component';
 import { ProductEditComponent } from './pages/private/products/product-edit/product-edit.component';
 import { UserEditComponent } from './pages/private/users/user-edit/user-edit.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'credits', component: CreditsComponent },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [ authGuard] },
     { path: '404', component: PageNotFoundComponent },
     { path: 'dashboard/users', component: UsersComponent },
     { path: 'dashboard/products', component: ProductsComponent },

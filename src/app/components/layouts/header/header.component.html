@@ -1,9 +1,11 @@
 <header class="header">
     <div class="container">
         <nav class="nav-header">
-            <a href="#carta" class="nav-link">Menu</a>
-            <a href="" class="nav-link">Contacto</a>
-            <a href="" class="nav-link">Ubicacion</a>
+            <ul class="main-menu">
+                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Menu</a></li>
+                <li ><a class="nav-user" routerLink="login" routerLinkActive="active">ubicacion</a></li>
+                <li ><a class="nav-user" routerLink="register" routerLinkActive="active">contacto</a></li>
+            </ul>
         </nav>
         <div class="logo">
             <h1 class="name-empresa">Halcon Dorado</h1>
@@ -18,11 +20,11 @@
         </nav>
     </div>
 </header>
-<nav>
+<!-- <nav>
     <ul class="main-menu">
         <li><a routerLink="dashboard" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
-        <!-- <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li> -->
+        <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>
         <li>
             <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Users</a>
@@ -54,7 +56,8 @@
             </ul>
         </li>
     </ul>
-    @if( user ) {
+</nav> -->
+
+@if( user ) {
     <p>Holaa, {{user.name}}</p>
     }
-</nav>

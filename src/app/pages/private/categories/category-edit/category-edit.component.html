@@ -10,7 +10,7 @@
         <div class="form-content">
             <div class="field">
                 <label for="name">Name Category *</label>
-                <input type="text" formControlName="name" id="name"  placeholder="Ex: Drinks" />
+                <input class="inputs-form" type="text" formControlName="name" id="name"  placeholder="Ex: Drinks" />
                 <div class="error">
                     @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
                         @if( this.formData.get( 'name' )?.errors?.['required'] ) {

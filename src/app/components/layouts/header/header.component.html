@@ -1,13 +1,14 @@
-<header class="header">
-    <div class="container">
+<header class="header container-fluid">
+
+    <div class="container-header">
         <!-- Menú de Navegación Izquierdo -->
         <nav class="nav-header left-menu">
             <ul class="main-menu">
                 <li>
-                    <a class="nav-user" routerLink="credits" routerLinkActive="active">Menú</a>
+                    <a class="nav-user" routerLink="home" routerLinkActive="active">Menú</a>
                 </li>
-                <li><a class="nav-user" routerLink="login" routerLinkActive="active">Ubicación</a></li>
-                <li><a class="nav-user" routerLink="register" routerLinkActive="active">Contacto</a></li>
+                <li><a class="nav-user" routerLink="home" routerLinkActive="active">Ubicación</a></li>
+                <li><a class="nav-user" routerLink="home" routerLinkActive="active">Contacto</a></li>
             </ul>
         </nav>
 
@@ -28,6 +29,9 @@
             </ul>
         </nav>
     </div>
+    @if( user ) {
+        <p class="hi-user">Hola, {{user.name}}</p>
+        }
 </header>
 
 
@@ -70,6 +74,3 @@
     </ul>
 </nav> -->
 
-@if( user ) {
-    <p>Holaa, {{user.name}}</p>
-    }

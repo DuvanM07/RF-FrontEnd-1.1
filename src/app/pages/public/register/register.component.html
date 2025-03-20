@@ -1,16 +1,11 @@
-<form
-    class="form form-login"
-    [formGroup]="formData"
-    (ngSubmit)="onSubmit()"
->
+<form class="form form-register" [formGroup]="formData" (ngSubmit)="onSubmit()">
     <h1>Register</h1>
 
     <div class="form-container">
-        <!-- Este elemento contiene el formulario  -->
-        <div class="form-content">
+        <div class="form-content">  <!-- Este elemento contiene el formulario  -->
             <div class="field">
-                <label for="name">Name *</label>
-                <input type="text" formControlName="name" id="name"  placeholder="Ex: Manuela Gomez" />
+                <label class="label-form-register" for="name">Name</label>
+                <input class="inputs-form" type="text" formControlName="name" id="name"  placeholder="Ex: Manuela Gomez" />
                 <div class="error">
                     @if( this.formData.get( 'name' )?.invalid && ( this.formData.get( 'name' )?.dirty || this.formData.get( 'name' )?.touched ) ) {
                         @if( this.formData.get( 'name' )?.errors?.['required'] ) {
@@ -20,8 +15,8 @@
                 </div>
             </div>
             <div class="field">
-                <label for="username">Username *</label>
-                <input type="text" formControlName="username" id="username"  placeholder="Ex: manuela@email.co" />
+                <label for="username">Username</label>
+                <input class="inputs-form" type="text" formControlName="username" id="username"  placeholder="Ex: manuela@email.co" />
                 <div class="error">
                     @if( this.formData.get( 'username' )?.invalid && ( this.formData.get( 'username' )?.dirty || this.formData.get( 'username' )?.touched ) ) {
                         @if( this.formData.get( 'username' )?.errors?.['required'] ) {
@@ -34,8 +29,8 @@
                 </div>
             </div>
             <div class="field">
-                <label for="password">Password *</label>
-                <input type="password" formControlName="password" id="password" placeholder="Ej: *********" />
+                <label class="label-form-register" for="password">Password</label>
+                <input class="inputs-form" type="password" formControlName="password" id="password" placeholder="Ej: *********" />
                 <div class="error">
                     @if( this.formData.get( 'password' )?.invalid && ( this.formData.get( 'password' )?.dirty || this.formData.get( 'password' )?.touched ) ) {
                         @if( this.formData.get( 'password' )?.errors?.[ 'required' ] ) {
@@ -50,8 +45,8 @@
                     }
                 </div>
             </div>
-            <div class="field">
-                <button type="submit" [disabled]="this.formData.invalid">Register</button>
+            <div class="field field-actions">
+                <button class="button-form" type="submit" [disabled]="this.formData.invalid">Register</button>
             </div>
         </div>
 
@@ -59,7 +54,7 @@
         <div class="form-errors">
             <div class="title">Form fields error</div>
             <div class="field">
-                <label for="name">Name</label>
+                <label  class="label-form-register" for="name">Name</label>
                 <code class="error">{{ formData.get( 'name' )?.errors | json }}</code>
             </div>
             <div class="field">

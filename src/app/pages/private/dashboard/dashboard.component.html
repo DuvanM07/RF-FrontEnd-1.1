@@ -1,39 +1,43 @@
-<h1>ADMINISTRACION</h1>
+<section class="main-dashboard">
+    <h1 class="dashboard-title">Administración</h1>
 
-    <div class="lista-dashboard">
+    <div class="dashboard-menu">
         <nav>
-            <ul class="main-menu-darshboard">
-                <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>
+            <ul class="menu">
                 <li>
-                    <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{ exact: true }">Users</a>
-                    <ul class="sub-menu users-menu">
-                        <li><a [routerLink]="[ 'dashboard', 'user', 'new' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">New User</a></li>
-                        <li><a [routerLink]="[ 'dashboard', 'user', 'edit' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Edit User</a></li>
+                    <a [routerLink]="['dashboard', 'users']" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Usuarios</a>
+                    <ul class="submenu">
+                        <li><a [routerLink]="['dashboard', 'user', 'new']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Nuevo Usuario</a></li>
+                        <li><a [routerLink]="['dashboard', 'user', 'edit']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Editar Usuario</a></li>
                     </ul>
                 </li>
+
                 <li>
-                    <a [routerLink]="[ '/dashboard', 'products' ]" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{ exact: true }">Products</a>
-                    <ul class="sub-menu categories-menu">
-                        <li><a [routerLink]="[ 'dashboard', 'product', 'new' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">New Product</a></li>
-                        <li><a [routerLink]="[ 'dashboard', 'product', 'edit' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Edit Product</a></li>
+                    <a [routerLink]="['/dashboard', 'products']" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Productos</a>
+                    <ul class="submenu">
+                        <li><a [routerLink]="['/dashboard', 'product', 'new']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Nuevo Producto</a></li>
+                        <li><a [routerLink]="['/dashboard', 'product', 'edit']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Editar Producto</a></li>
                     </ul>
                 </li>
+
                 <li>
-                    <a [routerLink]="[ '/dashboard', 'categories' ]" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{ exact: true }">Categories</a>
-                    <ul class="sub-menu categories-menu">
-                        <li><a [routerLink]="[ 'dashboard', 'category', 'new' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">New Category</a></li>
-                        <li><a [routerLink]="[ 'dashboard', 'category', 'edit' ]" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Edit Category</a></li>
+                    <a [routerLink]="['/dashboard', 'categories']" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Categorías</a>
+                    <ul class="submenu">
+                        <li><a [routerLink]="['/dashboard', 'category', 'new']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Nueva Categoría</a></li>
+                        <li><a [routerLink]="['/dashboard', 'category', 'edit']" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Editar Categoría</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </div>
+
+</section>

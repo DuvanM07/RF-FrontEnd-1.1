@@ -3,10 +3,10 @@
 
     <div class="form-container">
         <div class="form-content">
-            
+
             <!-- Campo de Username -->
             <div class="field">
-                <label class="label-form-login" for="username">Username</label>
+                <label class="label-form-register" for="username">Username</label>
                 <input class="inputs-form" type="text" formControlName="username" id="username" placeholder="Ej: manuela@correo.co" />
                 <div class="error">
                     @if(this.formData.get('username')?.invalid && (this.formData.get('username')?.dirty || this.formData.get('username')?.touched)) {

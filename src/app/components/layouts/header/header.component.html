@@ -1,31 +1,39 @@
 <header class="header">
     <div class="container">
-        <nav class="nav-header">
+        <!-- Menú de Navegación Izquierdo -->
+        <nav class="nav-header left-menu">
             <ul class="main-menu">
-                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Menu</a>
-                    <ul class="sub-menu categories-menu">
-                        <li><a routerLink="dashboard" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
-                    </ul>
+                <li>
+                    <a class="nav-user" routerLink="credits" routerLinkActive="active">Menú</a>
                 </li>
-                <li ><a class="nav-user" routerLink="login" routerLinkActive="active">ubicacion</a></li>
-                <li ><a class="nav-user" routerLink="register" routerLinkActive="active">contacto</a></li>
+                <li><a class="nav-user" routerLink="login" routerLinkActive="active">Ubicación</a></li>
+                <li><a class="nav-user" routerLink="register" routerLinkActive="active">Contacto</a></li>
             </ul>
         </nav>
+
+        <!-- Logo Centrado -->
         <div class="logo">
             <a routerLink="home">
                 <img src="assets/images/hawk.png" alt="Logo" />
-            </a> 
+            </a>
         </div>
-        <nav class="nav-header">
+
+        <!-- Menú de Navegación Derecho -->
+        <nav class="nav-header right-menu">
             <ul class="main-menu">
-                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Credits</a></li>
-                <li ><a class="nav-user" routerLink="login" routerLinkActive="active">Login</a></li>
-                <li ><a class="nav-user" (click)="logout()">Logout</a></li>
+
+                    <li><a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+                <li><a class="nav-user" routerLink="login" routerLinkActive="active">Login</a></li>
+                <li><a class="nav-user" (click)="logout()">Logout</a></li>
             </ul>
         </nav>
     </div>
 </header>
+
+
+
+
+
 <!-- <nav>
     <ul class="main-menu">
         <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>

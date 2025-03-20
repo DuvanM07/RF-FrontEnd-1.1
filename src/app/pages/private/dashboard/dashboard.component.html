@@ -1,2 +1,39 @@
-<h1>dashboard works!</h1>
-<p>This is the administration panel. Here you'll need to create a design that makes it easy for the owner to manage all the app's features.</p>
+<h1>ADMINISTRACION</h1>
+
+    <div class="lista">
+        <nav>
+            <ul class="main-menu">
+                <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>
+                <li>
+                    <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Users</a>
+                    <ul class="sub-menu users-menu">
+                        <li><a [routerLink]="[ 'dashboard', 'user', 'new' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">New User</a></li>
+                        <li><a [routerLink]="[ 'dashboard', 'user', 'edit' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Edit User</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/dashboard', 'products' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Products</a>
+                    <ul class="sub-menu categories-menu">
+                        <li><a [routerLink]="[ 'dashboard', 'product', 'new' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">New Product</a></li>
+                        <li><a [routerLink]="[ 'dashboard', 'product', 'edit' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Edit Product</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a [routerLink]="[ '/dashboard', 'categories' ]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+                    <ul class="sub-menu categories-menu">
+                        <li><a [routerLink]="[ 'dashboard', 'category', 'new' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">New Category</a></li>
+                        <li><a [routerLink]="[ 'dashboard', 'category', 'edit' ]" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Edit Category</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>

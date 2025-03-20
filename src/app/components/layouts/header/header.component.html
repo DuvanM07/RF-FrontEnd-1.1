@@ -2,19 +2,25 @@
     <div class="container">
         <nav class="nav-header">
             <ul class="main-menu">
-                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Menu</a></li>
+                <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Menu</a>
+                    <ul class="sub-menu categories-menu">
+                        <li><a routerLink="dashboard" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+                    </ul>
+                </li>
                 <li ><a class="nav-user" routerLink="login" routerLinkActive="active">ubicacion</a></li>
                 <li ><a class="nav-user" routerLink="register" routerLinkActive="active">contacto</a></li>
             </ul>
         </nav>
         <div class="logo">
-            <h1 class="name-empresa">Halcon Dorado</h1>
+            <a routerLink="home">
+                <img src="assets/images/hawk.png" alt="Logo" />
+            </a> 
         </div>
         <nav class="nav-header">
             <ul class="main-menu">
                 <li ><a class="nav-user" routerLink="credits" routerLinkActive="active">Credits</a></li>
                 <li ><a class="nav-user" routerLink="login" routerLinkActive="active">Login</a></li>
-                <li ><a class="nav-user" routerLink="register" routerLinkActive="active">Register</a></li>
                 <li ><a class="nav-user" (click)="logout()">Logout</a></li>
             </ul>
         </nav>
@@ -22,8 +28,6 @@
 </header>
 <!-- <nav>
     <ul class="main-menu">
-        <li><a routerLink="dashboard" routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
         <li><a routerLink="dashboard/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a></li>
         <li>
             <a [routerLink]="[ 'dashboard', 'users' ]" routerLinkActive="active"

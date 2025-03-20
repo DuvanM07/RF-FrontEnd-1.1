@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,11 @@ export class RegisterComponent {
   /** Atributos */
   formData!: FormGroup;
 
-  constructor( private authService: AuthService ) {
+  constructor( 
+    private authService: AuthService,
+    private router: Router
+   ) 
+   {
     // Agrupacion de campos del formulario
     this.formData = new FormGroup({
       name: new FormControl( '' , [ Validators.required ] ),
@@ -44,6 +49,7 @@ export class RegisterComponent {
       this.authService.registerUser( inputData ).subscribe({
         next: ( data ) => {
           console.log( data );
+          this.router.navigateByUrl( '/login' );
         },
         error: ( err ) => {
           console.error( err );

@@ -2,11 +2,11 @@ import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ ReactiveFormsModule, JsonPipe ],
+  imports: [ ReactiveFormsModule, RouterLinkActive, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
